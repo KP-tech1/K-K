@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kimberly & Kris - 4 Years of Love</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #8A2BE2;
+            --secondary: #FF69B4;
+            --accent: #FFD700;
+            --light: #F5F5F5;
+            --dark: #333333;
+            --beach: #87CEEB;
+            --sand: #F4A460;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom, var(--beach), var(--sand));
+            color: var(--dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: rgba(138, 43, 226, 0.9);
+            color: white;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            padding: 10px 0;
+            background: rgba(138, 43, 226, 0.95);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.3);
+            z-index: -1;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80') no-repeat center center/cover;
+            z-index: -2;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+        
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .countdown-item {
+            background: rgba(255,255,255,0.2);
+            padding: 15px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            min-width: 80px;
+        }
+        
+        .countdown-number {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        
+        .countdown-label {
+            font-size: 0.9rem;
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: var(--primary);
+        }
+        
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: transform 0.5s ease;
+        }
+        
+        .about-image:hover {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Memories Section */
+        .memories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .memory-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .memory-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .memory-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .memory-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .memory-card:hover .memory-img img {
+            transform: scale(1.1);
+        }
+        
+        .memory-content {
+            padding: 20px;
+        }
+        
+        .memory-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        /* Favorites Section */
+        .favorites-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .favorite-item {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            width: 250px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .favorite-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .favorite-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        /* Video Section */
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        
+        /* Love Letter Section */
+        .love-letter {
+            background: rgba(255,255,255,0.8);
+            border-radius: 20px;
+            padding: 50px;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .love-letter::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px solid var(--primary);
+            border-radius: 25px;
+            z-index: -1;
+        }
+        
+        .letter-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .letter-signature {
+            text-align: right;
+            margin-top: 30px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 50px 0 20px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .footer-logo {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .footer-text {
+            margin-bottom: 30px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent);
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 15px;
+            max-width: 600px;
+            width: 90%;
+            padding: 30px;
+            position: relative;
+            animation: modalFadeIn 0.5s ease;
+        }
+        
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+        
+        .modal-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-image {
+                transform: none;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--primary);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .love-letter {
+                padding: 30px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .countdown {
+                flex-wrap: wrap;
+            }
+            
+            .countdown-item {
+                min-width: 70px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        
+        /* 3D Effects */
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .heart {
+            color: var(--secondary);
+            animation: heartbeat 1.5s ease-in-out infinite both;
+        }
+        
+        @keyframes heartbeat {
+            from {
+                transform: scale(1);
+                transform-origin: center center;
+                animation-timing-function: ease-out;
+            }
+            10% {
+                transform: scale(0.91);
+                animation-timing-function: ease-in;
+            }
+            17% {
+                transform: scale(0.98);
+                animation-timing-function: ease-out;
+            }
+            33% {
+                transform: scale(0.87);
+                animation-timing-function: ease-in;
+            }
+            45% {
+                transform: scale(1);
+                animation-timing-function: ease-out;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Kimberly & Kris</div>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">Our Story</a></li>
+                    <li><a href="#memories">Memories</a></li>
+                    <li><a href="#favorites">Favorites</a></li>
+                    <li><a href="#video">Our Journey</a></li>
+                    <li><a href="#letter">Love Letter</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1>Four Years of Love</h1>
+            <p>Celebrating our journey since October 25th, 2021</p>
+            <div class="countdown">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="days">00</div>
+                    <div class="countdown-label">Days</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="hours">00</div>
+                    <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="minutes">00</div>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="seconds">00</div>
+                    <div class="countdown-label">Seconds</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">Our Beautiful Story</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>My dearest Kimberly, my princess, my love, my pumpkin...</p>
+                    <p>Four years ago, on October 25th, 2021, our journey began. Little did I know that day would mark the start of the most beautiful chapter of my life. You walked into my world and illuminated every corner of my existence with your radiant smile and loving heart.</p>
+                    <p>As Winnie the Pooh once said, <em>"If there ever comes a day when we can't be together, keep me in your heart, I'll stay there forever."</em> You, my love, have found a permanent home in my heart, and I in yours.</p>
+                    <p>Every moment with you feels like a blessing - from our beach days at Maracas to our cozy nights with Bollywood movies, from enjoying your amazing macaroni pie to sharing ice cream from Bellas. You've shown me what true love means, and I'm forever grateful.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1518568814500-bf0f8d125f46?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Couple on beach">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Memories Section -->
+    <section id="memories" class="section">
+        <div class="container">
+            <h2 class="section-title">Precious Memories</h2>
+            <div class="memories-grid">
+                <div class="memory-card" data-memory="1">
+                    <div class="memory-img">
+                    </div>
+                    <div class="memory-content">
+                        <h3 class="memory-title">Maracas Beach Days</h3>
+                        <p>Our favorite escape, where the waves whisper our love story and the sand holds our footprints forever.</p>
+                    </div>
+                </div>
+                <div class="memory-card" data-memory="2">
+                    <div class="memory-img">
+                    </div>
+                    <div class="memory-content">
+                        <h3 class="memory-title">Culinary Adventures</h3>
+                        <p>From your famous macaroni pie to our shared love for cheezy breadsticks - every meal with you is a feast for the soul.</p>
+                    </div>
+                </div>
+                <div class="memory-card" data-memory="3">
+                    <div class="memory-img">
+                    </div>
+                    <div class="memory-content">
+                        <h3 class="memory-title">Exploring Together</h3>
+                        <p>Every journey with you is an adventure, my love. Whether near or far, with you by my side, I'm home.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Favorites Section -->
+    <section id="favorites" class="section">
+        <div class="container">
+            <h2 class="section-title">Things My Princess Loves</h2>
+            <div class="favorites-container">
+                <div class="favorite-item">
+                    <div class="favorite-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Macaroni Pie and Stew Chicken</h3>
+                    <p>Your favourite dish</p>
+                </div>
+                <div class="favorite-item">
+                    <div class="favorite-icon">
+                        <i class="fas fa-ice-cream"></i>
+                    </div>
+                    <h3>Bella's Ice Cream</h3>
+                    <p>Sweet treats for my sweet love</p>
+                </div>
+                <div class="favorite-item">
+                    <div class="favorite-icon">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <h3>Bollywood & English Movies with TVShows</h3>
+                    <p>Our cinematic escapes filled with drama and romance</p>
+                </div>
+                <div class="favorite-item">
+                    <div class="favorite-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3>Bollywood Music</h3>
+                    <p>The soundtracks my beautiful loves</p>
+                </div>
+                <div class="favorite-item">
+                    <div class="favorite-icon">
+                        <i class="fas fa-volleyball-ball"></i>
+                    </div>
+                    <h3>Cricket</h3>
+                    <p>Your favorite sport that I love to watch with you</p>
+                </div>
+<div class="favorite-item" onclick="openModal('cookiesModal')">
+                    <div class="favorite-icon">
+                        <i class="fas fa-cookie-bite"></i>
+                    </div>
+                    <h3>Chocolate Chip Cookies</h3>
+<p>Sweeth Tooth<p>
+                </div>
+<div class="favorite-item" onclick="openModal('nutellaModal')">
+                    <div class="favorite-icon">
+                        <i class="fas fa-ice-cream"></i>
+                    </div>
+                    <h3>Nutella Chocolate</h3>
+<p>Your weakness<p>
+                </div>
+  <div class="favorite-item" onclick="openModal('travelModal2')">
+                    <div class="favorite-icon">
+                        <i class="fas fa-plane"></i>
+                    </div>
+                    <h3>Travelling</h3>
+<p>Your Calm<p>
+                </div>
+
+                <div class="favorite-item">
+                    <div class="favorite-icon">
+                        <i class="fas fa-umbrella-beach"></i>
+                    </div>
+                    <h3>Maracas Beach</h3>
+                    <p>Our paradise by the sea</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <!-- Video Section -->
+    <section id="video" class="section">
+        <div class="container">
+            <h2 class="section-title">Our Journey Together</h2>
+            <div class="video-container">
+                <div class="video-wrapper">
+                    <iframe src="https://www.canva.com/design/DAG2hmRjZw0/hFXX2gjFuOPHFgVd27DdGg/watch?embed" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Love Letter Section -->
+    <section id="letter" class="section">
+        <div class="container">
+            <h2 class="section-title">To My Sweet Princess</h2>
+            <div class="love-letter">
+                <div class="letter-content">
+                    <p>My dearest Princess,</p>
+                    <p>As I sit down to write this letter, my heart overflows with love for you. Four years have passed since that beautiful October day when our souls connected, and yet it feels like only yesterday that I first saw your smile that would come to light up my world.</p>
+                    <p>You are my everything - my princess, my love, my pumpkin. In your eyes, I found my home. In your laughter, I found my joy. In your embrace, I found my peace.</p>
+                    <p>Like Winnie the Pooh said, <em>"You're braver than you believe, stronger than you seem, and smarter than you think."</em> You've shown me strength, kindness, and wisdom beyond measure, and I'm in awe of the woman you are.</p>
+                    <p>I promise to always be by your side, through sunny beach days and stormy nights. To cherish our love for macaroni pie, cricket matches, and Bollywood movies. To hold your hand as we explore this beautiful world together.</p>
+                    <p>You are the poetry my heart has been trying to write all my life. With every beat, it whispers your name. With every breath, it calls out for you.</p>
+                    <p>Happy four-year anniversary, my love. Here's to countless more years of laughter, adventures, and growing old together.</p>
+                    <p>Forever yours,</p>
+                    <div class="letter-signature">Kris</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Kimberly & Kris</div>
+                <p class="footer-text">Four years of love, laughter, and beautiful memories. Here's to forever.</p>
+                <p class="copyright">© 2025 Kimberly & Kris | Made with <span class="heart"><i class="fas fa-heart"></i></span> for our 4th Anniversary</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Memory Modal -->
+    <div class="modal" id="memoryModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 class="modal-title" id="modalMemoryTitle">Memory Title</h2>
+            <div id="modalMemoryContent">
+                <!-- Memory content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenu.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+
+        // Countdown timer
+        function updateCountdown() {
+            const anniversaryDate = new Date('October 25, 2025 00:00:00').getTime();
+            const now = new Date().getTime();
+            const timeLeft = anniversaryDate - now;
+            
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Memory modal functionality
+        const memoryCards = document.querySelectorAll('.memory-card');
+        const memoryModal = document.getElementById('memoryModal');
+        const closeModal = document.querySelector('.close-modal');
+        const modalTitle = document.getElementById('modalMemoryTitle');
+        const modalContent = document.getElementById('modalMemoryContent');
+        
+        const memoryDetails = {
+            1: {
+                title: "Maracas Beach Days",
+                content: `<p>My dearest Kimberly, remember our first trip to Maracas Beach? The way the sun kissed your skin and the ocean breeze played with your hair - you looked like a goddess emerging from the sea.</p>
+                <p>We've created so many precious memories there - watching the sun paint the sky in hues of orange and purple, your favorite color.</p>
+                <p>Every grain of sand at Maracas holds a piece of our story, and I can't wait to add more chapters to our beach adventures.</p>`
+            },
+            2: {
+                title: "Culinary Adventures",
+                content: `<p>My love, your passion for cooking is one of the many things I adore about you. From the first time I tasted your macaroni pie, I knew I had found someone special.</p>
+                <p>Our kitchen adventures - trying new recipes, perfecting old ones, and occasionally creating delicious disasters - are some of my favorite memories. Whether it's the perfect burger, or those cheezy breadsticks we both love, every meal with you is a celebration.</p>
+                <p>And let's not forget our sweet indulgences - the chocolate cakes, cheesecakes, chocolate chip cookies, and Nutella treats that satisfy our sweet tooth and warm our hearts.</p>`
+            },
+            3: {
+                title: "Exploring Together",
+                content: `<p>My princess, every journey with you is magical. Whether we're traveling to new countries or simply exploring our own backyard, your sense of wonder and adventure makes everything more beautiful.</p>
+                <p>I love how your eyes light up when we discover new places, how you find joy in the simplest moments, and how you make every destination feel like home.</p>
+                <p>As Winnie the Pooh wisely said, <em>"Life is a journey to be experienced, not a problem to be solved."</em> With you, my love, every step of this journey is a blessing I cherish.</p>`
+            }
+        };
+        
+        memoryCards.forEach(card => {
+            card.addEventListener('click', function() {
+                const memoryId = this.getAttribute('data-memory');
+                const memory = memoryDetails[memoryId];
+                
+                modalTitle.textContent = memory.title;
+                modalContent.innerHTML = memory.content;
+                
+                memoryModal.style.display = 'flex';
+            });
+        });
+        
+        closeModal.addEventListener('click', function() {
+            memoryModal.style.display = 'none';
+        });
+        
+        window.addEventListener('click', function(event) {
+            if (event.target === memoryModal) {
+                memoryModal.style.display = 'none';
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
